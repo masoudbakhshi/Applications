@@ -1,0 +1,3 @@
+[submodule "RaspberryPi"]
+	path = RaspberryPi
+	url = https://github.com/masoudbakhshi/RaspberryPi.git
