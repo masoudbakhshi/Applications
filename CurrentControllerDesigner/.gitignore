@@ -8,3 +8,5 @@ __pycache__/
 myenv/
 venv/
 .venv/
+.claude/
+.streamlit/secrets.toml
