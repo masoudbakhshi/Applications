@@ -1,6 +1,8 @@
 # DriveCalc — Electrical, Motor Control & Power Electronics Calculator
 
-Professional engineering calculator for electrical, motor-control, power-electronics, embedded-firmware, thermal, and EV-propulsion calculations.
+**Author:** Masoud Bakhshi
+
+A practical engineering calculator covering motor control, power electronics, embedded firmware, thermal analysis, and EV propulsion. Built for engineers and students who need reliable, formula-based tools they can trust in real design work.
 
 ## Quick Start
 
