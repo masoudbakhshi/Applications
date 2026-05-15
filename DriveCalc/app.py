@@ -20,7 +20,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     menu_items={
         "About": "DriveCalc — Professional engineering calculator for motor control, "
-                 "power electronics, and EV propulsion. Built with Python & Streamlit.",
+                 "power electronics, and EV propulsion.\n"
+                 "Developed by Masoud Bakhshi.\n"
+                 "Built with Python & Streamlit.",
     },
 )
 
@@ -82,6 +84,11 @@ def render_home():
     st.title("⚡ DriveCalc")
     st.markdown(
         "### Professional Engineering Calculator — Motor Control, Power Electronics & EV Propulsion"
+    )
+    st.markdown(
+        "<p style='color:#555;font-size:0.9rem;margin-top:-8px'>"
+        "Developed by <strong>Masoud Bakhshi</strong></p>",
+        unsafe_allow_html=True,
     )
     st.divider()
 
@@ -268,7 +275,12 @@ def main():
         st.markdown(
             "<p style='font-size:0.72rem;color:#7986cb;text-align:center'>"
             "All formulas use SI units.<br>"
-            "Expand ▾ for derivations.<br><br>"
+            "Expand ▾ for derivations.</p>"
+            "<p style='font-size:0.78rem;color:#c5cae9;text-align:center;"
+            "margin-top:8px;border-top:1px solid #2e3560;padding-top:8px'>"
+            "Developed by<br>"
+            "<strong style='color:#e8eaf6;font-size:0.85rem'>Masoud Bakhshi</strong></p>"
+            "<p style='font-size:0.68rem;color:#5c6bc0;text-align:center;margin-top:2px'>"
             "v1.0 · Python + Streamlit</p>",
             unsafe_allow_html=True,
         )
@@ -304,7 +316,7 @@ def main():
 
     # Footer
     st.markdown(
-        "<div class='footer'>DriveCalc — Engineering Calculator · "
+        "<div class='footer'>DriveCalc — Developed by <strong>Masoud Bakhshi</strong> &nbsp;·&nbsp; "
         "All results are for educational and design support only. "
         "Verify critical values with measurements and certified analysis.</div>",
         unsafe_allow_html=True,
