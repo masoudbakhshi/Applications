@@ -3,6 +3,13 @@ DriveCalc — Electrical, Motor Control & Power Electronics Calculator
 Professional engineering toolbox for motor control, power electronics,
 embedded firmware, thermal analysis, and EV propulsion.
 """
+import sys
+import os
+
+# Ensure the DriveCalc directory is on the path so imports work whether
+# the app is launched from the repo root (Streamlit Cloud) or locally.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import streamlit as st
 
 # Page configuration — must be first Streamlit call
