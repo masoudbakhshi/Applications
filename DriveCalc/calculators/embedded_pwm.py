@@ -33,7 +33,7 @@ def _pwm_timer():
     st.subheader("PWM Timer Register Calculator")
     engineering_note(
         "Computes timer period register (TBPRD / ARR) for a given clock and PWM frequency. "
-        "Generic — applicable to TI C2000, STM32, Infineon TriCore, NXP S32 family."
+        "Generic: applicable to TI C2000, STM32, Infineon TriCore, NXP S32 family."
     )
     col1, col2 = st.columns(2)
     with col1:
@@ -81,7 +81,7 @@ def _pwm_timer():
         show_formula(formula)
         engineering_note(
             "<b>Edge-aligned (up-count):</b> Period = (TBPRD+1) / f_clk. Duty ripple occurs at f_pwm.<br>"
-            "<b>Center-aligned (up-down):</b> Period = 2·TBPRD / f_clk. Symmetrical carrier — "
+            "<b>Center-aligned (up-down):</b> Period = 2·TBPRD / f_clk. Symmetrical carrier: "
             "preferred for motor control (natural harmonic cancellation).<br>"
             "<b>Common mistake:</b> forgetting that center-aligned halves the effective period count."
         )
@@ -154,7 +154,7 @@ def _min_pulse_width():
         )
         engineering_note(
             "Double update mode halves the effective period for pulse width calculations. "
-            "<b>Common mistake:</b> ignoring dead time when checking minimum pulse — "
+            "<b>Common mistake:</b> ignoring dead time when checking minimum pulse: "
             "gate driver requires t_min measured from actual gate signal, not modulator output."
         )
 
@@ -165,7 +165,7 @@ def _dead_time_error():
     st.subheader("Dead-Time Voltage Error Estimator")
     engineering_note(
         "Estimates the average voltage error caused by dead time insertion. "
-        "Dead time always opposes current direction — creates a fundamental distortion, "
+        "Dead time always opposes current direction: creates a fundamental distortion, "
         "particularly visible at low speed and low current (small back-EMF)."
     )
     col1, col2 = st.columns(2)
@@ -199,8 +199,8 @@ def _dead_time_error():
         engineering_note(
             "<b>Effect:</b> Low-order voltage harmonics (6th, 12th in line-line) → torque ripple.<br>"
             "<b>Compensation:</b> Measure current direction and add/subtract t_dead correction to duty cycle.<br>"
-            "<b>Worst case:</b> Low speed, low current — distortion is highest relative to fundamental.<br>"
-            "<b>Common mistake:</b> ignoring dead-time effect in closed-loop current controller — "
+            "<b>Worst case:</b> Low speed, low current: distortion is highest relative to fundamental.<br>"
+            "<b>Common mistake:</b> ignoring dead-time effect in closed-loop current controller: "
             "the controller partially compensates, but residual distortion remains."
         )
 
@@ -263,7 +263,7 @@ float pi_update(float e) {
 ```
 """)
         engineering_note(
-            "<b>Anti-windup is mandatory</b> — without it, integrator winds up during saturation "
+            "<b>Anti-windup is mandatory</b>: without it, integrator winds up during saturation "
             "and causes large transients on recovery. "
             "Options: clamping (clamp u before storing u_prev) or back-calculation."
         )
@@ -421,7 +421,7 @@ def _db_gain():
         )
         engineering_note(
             "Remember: 6 dB ≈ ×2 amplitude, 20 dB = ×10 amplitude, 3 dB ≈ ×2 power. "
-            "<b>Common mistake:</b> using 20 log₁₀ for power ratios — must use 10 log₁₀."
+            "<b>Common mistake:</b> using 20 log₁₀ for power ratios: must use 10 log₁₀."
         )
 
 
@@ -431,7 +431,7 @@ def _cpu_load():
     st.subheader("CPU Load & ISR Timing Calculator")
     engineering_note(
         "Estimates CPU load from interrupt service routines (ISRs). "
-        "Critical for real-time motor control — current-loop ISR must complete within one PWM period."
+        "Critical for real-time motor control: current-loop ISR must complete within one PWM period."
     )
     col1, col2 = st.columns(2)
     with col1:
@@ -456,11 +456,11 @@ def _cpu_load():
         st.metric("Margin [cycles]", f"{margin_cycles}")
 
     if cpu_load > 80:
-        show_warning("CPU load > 80%. Risk of ISR overrun — optimize code or reduce ISR frequency.")
+        show_warning("CPU load > 80%. Risk of ISR overrun: optimize code or reduce ISR frequency.")
     elif cpu_load > 50:
         show_info("CPU load between 50–80%. Monitor carefully and leave headroom for other tasks.")
     else:
-        st.success(f"✅ CPU load {cpu_load:.1f}% — adequate margin.")
+        st.success(f"✅ CPU load {cpu_load:.1f}%: adequate margin.")
 
     engineering_note(
         "<b>Rule of thumb:</b> Current-loop ISR should use < 50% of CPU budget. "

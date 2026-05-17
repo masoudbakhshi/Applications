@@ -1,10 +1,10 @@
 """
-discrete_design.py — Discrete-time PI design and implementation coefficients
+discrete_design.py: Discrete-time PI design and implementation coefficients
 Author: Masoud Bakhshi
 
 Supported discretization methods:
-  ZOH     — Zero-Order Hold
-  Tustin  — Bilinear / Tustin transform
+  ZOH    : Zero-Order Hold
+  Tustin : Bilinear / Tustin transform
   Forward Euler
   Backward Euler
   Matched Pole-Zero (MPZ)

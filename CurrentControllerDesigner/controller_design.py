@@ -1,5 +1,5 @@
 """
-controller_design.py — Continuous-time PI controller synthesis
+controller_design.py: Continuous-time PI controller synthesis
 Author: Masoud Bakhshi
 
 Methods implemented:
@@ -43,7 +43,7 @@ class PIController:
 
 
 # ---------------------------------------------------------------------------
-# Method 1 — Bandwidth-based pole cancellation
+# Method 1: Bandwidth-based pole cancellation
 # ---------------------------------------------------------------------------
 
 def design_bandwidth(R: float, L: float, T_delay: float,
@@ -65,7 +65,7 @@ def design_bandwidth(R: float, L: float, T_delay: float,
 
 
 # ---------------------------------------------------------------------------
-# Method 2 — Symmetrical Optimum
+# Method 2: Symmetrical Optimum
 # ---------------------------------------------------------------------------
 
 def design_symmetrical_optimum(R: float, L: float,
@@ -88,7 +88,7 @@ def design_symmetrical_optimum(R: float, L: float,
 
 
 # ---------------------------------------------------------------------------
-# Method 3 — Magnitude Optimum
+# Method 3: Magnitude Optimum
 # ---------------------------------------------------------------------------
 
 def design_magnitude_optimum(R: float, L: float,
@@ -109,7 +109,7 @@ def design_magnitude_optimum(R: float, L: float,
 
 
 # ---------------------------------------------------------------------------
-# Method 4 — Bandwidth + Phase Margin (iterative)
+# Method 4: Bandwidth + Phase Margin (iterative)
 # ---------------------------------------------------------------------------
 
 def design_bandwidth_pm(R: float, L: float, T_delay: float,

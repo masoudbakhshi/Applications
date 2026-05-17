@@ -28,7 +28,7 @@ def _copper_loss():
     st.subheader("Motor Copper (I²R) Loss Calculator")
     engineering_note(
         "Calculates stator copper losses. Two conventions are supported. "
-        "Ensure you match the current type to the formula — mixing RMS/peak or phase/dq gives wrong results."
+        "Ensure you match the current type to the formula: mixing RMS/peak or phase/dq gives wrong results."
     )
     convention = st.radio(
         "Current input convention",
@@ -71,7 +71,7 @@ def _copper_loss():
             "P = (3/2)·R_s·(id² + iq²) where id, iq are peak amplitudes. "
             "This equals P = 3·I_rms²·R_s since I_peak = √2·I_rms, |I|² = id²+iq², I_rms = |I|/√2.<br>"
             "<b>Temperature effect:</b> R at temperature T = R_ref·(1 + α·ΔT). "
-            "Copper resistance rises ~0.4%/°C — significant at high winding temperature."
+            "Copper resistance rises ~0.4%/°C: significant at high winding temperature."
         )
 
 
@@ -109,7 +109,7 @@ def _thermal_rise():
         st.error(f"🔴 Temperature ({T_ss:.1f}°C) exceeds maximum ({T_max:.1f}°C). "
                  "Reduce losses or improve cooling.")
     elif margin < 10:
-        show_warning(f"Thermal margin only {margin:.1f} K — marginal for reliable operation.")
+        show_warning(f"Thermal margin only {margin:.1f} K: marginal for reliable operation.")
     else:
         st.success(f"✅ Thermal margin: {margin:.1f} K")
 
@@ -182,7 +182,7 @@ def _cable_loss():
         engineering_note(
             f"Copper ρ₂₀ = 1.72×10⁻⁸ Ω·m, α = 0.00393/°C. "
             f"Aluminium ρ₂₀ = 2.82×10⁻⁸ Ω·m, α = 0.00429/°C. "
-            "For three-phase: each phase cable carries phase current — calculate per-phase then ×3 for total loss."
+            "For three-phase: each phase cable carries phase current: calculate per-phase then ×3 for total loss."
         )
 
 
@@ -197,7 +197,7 @@ def _semiconductor_loss():
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("**IGBT / MOSFET parameters:**")
-        v_ce_sat = st.number_input("V_CE(sat) or R_DS(on) [V or mΩ] — use V for IGBT, mΩ for FET",
+        v_ce_sat = st.number_input("V_CE(sat) or R_DS(on) [V or mΩ]: use V for IGBT, mΩ for FET",
                                    value=1.8, min_value=0.0, key="sw_vce")
         device_type = st.selectbox("Device type", ["IGBT (V_CE(sat))", "MOSFET (R_ds(on))"],
                                    key="sw_type")

@@ -1,5 +1,5 @@
 """
-app.py — CurrentControllerDesigner  (Streamlit main entry point)
+app.py: CurrentControllerDesigner  (Streamlit main entry point)
 Author : Masoud Bakhshi
 Version: 1.0
 
@@ -71,7 +71,7 @@ st.markdown('<div class="main-title">⚡ CurrentControllerDesigner</div>',
 st.markdown(
     '<div class="sub-title">'
     'Frequency-Domain PI Controller Synthesis and Stability Analysis for '
-    'AC Electric Machine Drives — Current Loop, Torque Loop, and Speed Loop'
+    'AC Electric Machine Drives: Current Loop, Torque Loop, and Speed Loop'
     '</div>',
     unsafe_allow_html=True)
 st.markdown(
@@ -80,7 +80,7 @@ st.markdown(
 st.markdown("---")
 
 # ===========================================================================
-# Helper — must be defined before any tab renders
+# Helper: must be defined before any tab renders
 # ===========================================================================
 
 def _show_pi_card(title: str, pi: PIController, method: str):
@@ -102,12 +102,12 @@ with st.sidebar:
 
     machine_type_label = st.selectbox(
         "Machine Type",
-        ["EESM — Electrically Excited Synchronous Machine",
-         "IPMSM — Interior Permanent Magnet Synchronous Machine",
-         "IM — Induction Machine"],
+        ["EESM: Electrically Excited Synchronous Machine",
+         "IPMSM: Interior Permanent Magnet Synchronous Machine",
+         "IM: Induction Machine"],
         index=0,
     )
-    MT = machine_type_label.split("—")[0].strip()
+    MT = machine_type_label.split("-")[0].strip()
 
     st.markdown("---")
 
@@ -151,7 +151,7 @@ tab_params, tab_design, tab_stab, tab_export = st.tabs(
 )
 
 # ===========================================================================
-# TAB 1 — Parameters
+# TAB 1: Parameters
 # ===========================================================================
 
 with tab_params:
@@ -159,7 +159,7 @@ with tab_params:
                 unsafe_allow_html=True)
     st.info(
         "Default values represent a **270 kW heavy-truck propulsion motor** "
-        "(example only — replace with measured / validated data)."
+        "(example only: replace with measured / validated data)."
     )
 
     col1, col2, col3 = st.columns(3)
@@ -222,7 +222,7 @@ with tab_params:
     # ---- Machine-specific inputs ----
     if MT == "EESM":
         with col4:
-            st.markdown("**EESM — Rotor Field Winding**")
+            st.markdown("**EESM: Rotor Field Winding**")
             Rf   = st.number_input("Field resistance Rf (Ω)",
                                    value=0.85, format="%.4f", min_value=1e-5)
             Lf   = st.number_input("Field inductance Lf (H)",
@@ -238,7 +238,7 @@ with tab_params:
             T_comp_field = T_comp_field_us * 1e-6
 
         with col5:
-            st.markdown("**EESM — Bandwidths**")
+            st.markdown("**EESM: Bandwidths**")
             J   = st.number_input("Inertia J (kg·m²)",
                                   value=2.5, format="%.3f", min_value=1e-5)
             B   = st.number_input("Damping B (N·m·s/rad)",
@@ -260,7 +260,7 @@ with tab_params:
 
     elif MT == "IPMSM":
         with col4:
-            st.markdown("**IPMSM — PM Flux**")
+            st.markdown("**IPMSM: PM Flux**")
             psi_pm = st.number_input("PM flux linkage ψ_pm (Wb)",
                                      value=0.085, format="%.5f", min_value=1e-6)
             omega_bw_cur = st.number_input("Current-loop BW (rad/s)",
@@ -268,7 +268,7 @@ with tab_params:
             omega_bw_spd = st.number_input("Speed-loop BW (rad/s)",
                                            value=50.0, format="%.1f", min_value=0.1)
         with col5:
-            st.markdown("**IPMSM — Mechanical**")
+            st.markdown("**IPMSM: Mechanical**")
             J = st.number_input("Inertia J (kg·m²)",
                                 value=2.5, format="%.3f", min_value=1e-5)
             B = st.number_input("Damping B (N·m·s/rad)",
@@ -280,7 +280,7 @@ with tab_params:
 
     else:  # IM
         with col4:
-            st.markdown("**IM — Rotor**")
+            st.markdown("**IM: Rotor**")
             Rr    = st.number_input("Rotor resistance Rr (Ω)",
                                     value=0.008, format="%.5f", min_value=1e-6)
             Ls_im = st.number_input("Stator inductance Ls (H)",
@@ -292,7 +292,7 @@ with tab_params:
             omega_bw_cur = st.number_input("Current-loop BW (rad/s)",
                                            value=2000.0, format="%.1f", min_value=10.0)
         with col5:
-            st.markdown("**IM — Mechanical**")
+            st.markdown("**IM: Mechanical**")
             J = st.number_input("Inertia J (kg·m²)",
                                 value=2.5, format="%.3f", min_value=1e-5)
             B = st.number_input("Damping B (N·m·s/rad)",
@@ -322,7 +322,7 @@ with tab_params:
     st.session_state["include_spd"]      = include_speed_loop
 
 # ===========================================================================
-# TAB 2 — Controller Design
+# TAB 2: Controller Design
 # ===========================================================================
 
 with tab_design:
@@ -442,10 +442,10 @@ with tab_design:
                 "Channel": ch,
                 "Kp":      f"{pi.Kp:.5g}",
                 "Ki (CT)": f"{pi.Ki:.5g}",
-                "b0":      f"{dr.b0:.5g}" if dr else "—",
-                "b1":      f"{dr.b1:.5g}" if dr else "—",
-                "Ki_d":    f"{dr.Ki_d:.5g}" if dr else "—",
-                "Method":  dr.method if dr else "—",
+                "b0":      f"{dr.b0:.5g}" if dr else "-",
+                "b1":      f"{dr.b1:.5g}" if dr else "-",
+                "Ki_d":    f"{dr.Ki_d:.5g}" if dr else "-",
+                "Method":  dr.method if dr else "-",
             })
         st.dataframe(pd.DataFrame(rows), hide_index=True,
                      use_container_width=True)
@@ -474,7 +474,7 @@ with tab_design:
         st.info("Set parameters in the **Parameters** tab, then click **▶ Run Design**.")
 
 # ===========================================================================
-# TAB 3 — Stability Analysis
+# TAB 3: Stability Analysis
 # ===========================================================================
 
 with tab_stab:
@@ -524,7 +524,7 @@ with tab_stab:
 
                 ch_figs = full_analysis_figures(L_tf, T_tf, S_tf, ch_name)
                 for k, f in ch_figs.items():
-                    stab_figs[f"{ch_name} — {k}"] = f
+                    stab_figs[f"{ch_name}: {k}"] = f
 
             # Parameter sweeps for d-axis
             R_nom = mp["Rs"]
@@ -537,12 +537,12 @@ with tab_stab:
                 R_nom, L_nom, pi_d.Kp, pi_d.Ki, T_del)
 
             stab_figs["Resistance Sensitivity (d)"] = sensitivity_sweep_figure(
-                Ra, pm_r, gm_r, "R (Ω)", R_nom, "R Sensitivity — d-axis")
+                Ra, pm_r, gm_r, "R (Ω)", R_nom, "R Sensitivity: d-axis")
             stab_figs["Inductance Sensitivity (d)"] = sensitivity_sweep_figure(
-                La, pm_l, gm_l, "L (H)", L_nom, "L Sensitivity — d-axis")
+                La, pm_l, gm_l, "L (H)", L_nom, "L Sensitivity: d-axis")
             stab_figs["Delay Sensitivity (d)"] = sensitivity_sweep_figure(
                 Ta * 1e6, pm_t, gm_t, "T_delay (µs)",
-                T_del * 1e6, "Delay Sensitivity — d-axis")
+                T_del * 1e6, "Delay Sensitivity: d-axis")
 
             st.session_state["stab_results"] = stab_results
             st.session_state["stab_figs"]    = stab_figs
@@ -581,7 +581,7 @@ with tab_stab:
                 st.warning(w)
 
             if len(sr.discrete_poles):
-                with st.expander(f"{ch_name} — Discrete closed-loop poles"):
+                with st.expander(f"{ch_name}: Discrete closed-loop poles"):
                     pole_df = pd.DataFrame({
                         "Re": sr.discrete_poles.real,
                         "Im": sr.discrete_poles.imag,
@@ -601,7 +601,7 @@ with tab_stab:
         st.info("Run design first, then click **▶ Run Stability Analysis**.")
 
 # ===========================================================================
-# TAB 4 — Export
+# TAB 4: Export
 # ===========================================================================
 
 with tab_export:

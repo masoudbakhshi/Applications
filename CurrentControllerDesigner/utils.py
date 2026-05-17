@@ -1,5 +1,5 @@
 """
-utils.py — Shared utilities for CurrentControllerDesigner
+utils.py: Shared utilities for CurrentControllerDesigner
 Author: Masoud Bakhshi
 """
 

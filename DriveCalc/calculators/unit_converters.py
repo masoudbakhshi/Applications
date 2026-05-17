@@ -1,4 +1,4 @@
-"""Unit converter calculators — all four domains."""
+"""Unit converter calculators: all four domains."""
 import numpy as np
 import streamlit as st
 from utils.formatting import show_formula, engineering_note, show_info

@@ -1,4 +1,4 @@
-# DriveCalc — Electrical, Motor Control & Power Electronics Calculator
+# DriveCalc: Electrical, Motor Control & Power Electronics Calculator
 
 **Author:** Masoud Bakhshi
 
@@ -70,7 +70,7 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 - All formulas use SI units internally; unit conversions are performed at the display layer.
 - dq-frame currents `id`, `iq` are **peak** values throughout, not RMS.
 - PMSM torque formula: `Te = (3/2)·p·[ψ_f·iq + (Ld−Lq)·id·iq]`
-- SVPWM voltage limit: `V_dc/√3` (vs `V_dc/2` for SPWM — 15.5% advantage)
+- SVPWM voltage limit: `V_dc/√3` (vs `V_dc/2` for SPWM: 15.5% advantage)
 - PI gains use bandwidth-based design: `Kp = L·ωc`, `Ki = Rs·ωc`
 - All thermal calculations are simplified single-element RC models
 

@@ -1,5 +1,5 @@
 """
-stability_analysis.py — Comprehensive stability and robustness analysis
+stability_analysis.py: Comprehensive stability and robustness analysis
 Author: Masoud Bakhshi
 """
 
@@ -96,7 +96,7 @@ def analyse_loop(L_tf: control.TransferFunction,
         mag_s, _, _ = control.bode(S_tf, omega, plot=False)
         rpt.Ms = float(np.max(mag_s))
         if rpt.Ms > 2.0:
-            rpt.warnings.append(f"Sensitivity peak Ms={rpt.Ms:.2f} > 2 — poor robustness.")
+            rpt.warnings.append(f"Sensitivity peak Ms={rpt.Ms:.2f} > 2: poor robustness.")
     except Exception:
         pass
 
@@ -126,9 +126,9 @@ def analyse_loop(L_tf: control.TransferFunction,
         pass
 
     if rpt.phase_margin_deg < 30.0:
-        rpt.warnings.append(f"Phase margin {rpt.phase_margin_deg:.1f}° < 30° — marginal stability.")
+        rpt.warnings.append(f"Phase margin {rpt.phase_margin_deg:.1f}° < 30°: marginal stability.")
     if rpt.gain_margin_db < 6.0:
-        rpt.warnings.append(f"Gain margin {rpt.gain_margin_db:.1f} dB < 6 dB — marginal.")
+        rpt.warnings.append(f"Gain margin {rpt.gain_margin_db:.1f} dB < 6 dB: marginal.")
 
     return rpt
 
@@ -255,8 +255,8 @@ def full_analysis_figures(L_tf, T_tf, S_tf,
                            label: str = "") -> Dict[str, plt.Figure]:
     """Return a dict of figures for the stability section."""
     figs = {}
-    figs["bode"]      = bode_plot(L_tf, title=f"Bode — {label}")
-    figs["step"]      = step_response_plot(T_tf, title=f"Step Response — {label}")
-    figs["pz"]        = pole_zero_plot(T_tf, title=f"Closed-Loop Poles/Zeros — {label}")
-    figs["nyquist"]   = nyquist_plot(L_tf, title=f"Nyquist — {label}")
+    figs["bode"]      = bode_plot(L_tf, title=f"Bode: {label}")
+    figs["step"]      = step_response_plot(T_tf, title=f"Step Response: {label}")
+    figs["pz"]        = pole_zero_plot(T_tf, title=f"Closed-Loop Poles/Zeros: {label}")
+    figs["nyquist"]   = nyquist_plot(L_tf, title=f"Nyquist: {label}")
     return figs

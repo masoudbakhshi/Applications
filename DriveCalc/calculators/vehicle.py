@@ -184,7 +184,7 @@ def _road_load():
         )
         show_formula(r"P_{wheel} = F_{total}\cdot v")
         engineering_note(
-            "Aerodynamic drag scales as v² — doubles the speed → 4× aero power. "
+            "Aerodynamic drag scales as v²: doubles the speed → 4× aero power. "
             "At highway speed, aero typically dominates. "
             "At low speed on steep grade, grade force dominates."
         )

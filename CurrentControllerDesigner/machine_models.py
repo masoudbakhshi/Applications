@@ -1,5 +1,5 @@
 """
-machine_models.py — Electrical plant models for EESM, IPMSM, and IM
+machine_models.py: Electrical plant models for EESM, IPMSM, and IM
 Author: Masoud Bakhshi
 
 All plant transfer functions are expressed in the dq-frame.

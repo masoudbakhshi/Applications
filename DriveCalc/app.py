@@ -1,5 +1,5 @@
 """
-DriveCalc — Electrical, Motor Control & Power Electronics Calculator
+DriveCalc: Electrical, Motor Control & Power Electronics Calculator
 Professional engineering toolbox for motor control, power electronics,
 embedded firmware, thermal analysis, and EV propulsion.
 """
@@ -12,14 +12,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import streamlit as st
 
-# Page configuration — must be first Streamlit call
+# Page configuration: must be first Streamlit call
 st.set_page_config(
     page_title="DriveCalc",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        "About": "DriveCalc — Professional engineering calculator for motor control, "
+        "About": "DriveCalc: Professional engineering calculator for motor control, "
                  "power electronics, and EV propulsion.\n"
                  "Developed by Masoud Bakhshi.\n"
                  "Built with Python & Streamlit.",
@@ -66,7 +66,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Lazy imports — only load the selected module to keep startup fast
+# Lazy imports: only load the selected module to keep startup fast
 SECTIONS = {
     "🏠 Home": None,
     "🔄 Unit Converters": "unit_converters",
@@ -83,7 +83,7 @@ SECTIONS = {
 def render_home():
     st.title("⚡ DriveCalc")
     st.markdown(
-        "### Professional Engineering Calculator — Motor Control, Power Electronics & EV Propulsion"
+        "### Professional Engineering Calculator: Motor Control, Power Electronics & EV Propulsion"
     )
     st.markdown(
         "<p style='color:#555;font-size:0.9rem;margin-top:-8px'>"
@@ -122,8 +122,8 @@ def render_home():
     with cols[2]:
         st.markdown("""
 **🌡️ Thermal & Loss**
-- Motor copper (I²R) loss — RMS and dq convention
-- Thermal rise — steady-state & transient with plot
+- Motor copper (I²R) loss: RMS and dq convention
+- Thermal rise: steady-state & transient with plot
 - Cable voltage drop & I²R loss
 - Semiconductor loss (conduction + switching)
 
@@ -137,9 +137,9 @@ def render_home():
 
     st.divider()
     st.markdown("""
-**⚡ General Electrical** — Ohm's law, RC/RL/RLC circuits, power factor, impedance, filter design
+**⚡ General Electrical**: Ohm's law, RC/RL/RLC circuits, power factor, impedance, filter design
 
-**📚 Formula Reference** — All formulas used in the tool with derivations and engineering notes
+**📚 Formula Reference**: All formulas used in the tool with derivations and engineering notes
 
 ---
 > **Usage:** Select a section from the left sidebar.
@@ -174,7 +174,7 @@ $$P = T\,\omega_m \qquad P_{kW} = \frac{T_{Nm}\cdot n_{rpm}}{9549}$$
 $$T_e = \frac{3}{2}\,p\,\left[\psi_f\,i_q + (L_d - L_q)\,i_d\,i_q\right]$$
 
 - $\psi_f$: permanent magnet flux linkage [Wb]
-- $i_d, i_q$: d/q axis currents — **peak values** (not RMS)
+- $i_d, i_q$: d/q axis currents: **peak values** (not RMS)
 - First term: magnet torque. Second term: reluctance torque (IPMSM: $L_q > L_d$)
 """,
         "EESM Electromagnetic Torque": r"""
@@ -217,7 +217,7 @@ $$\text{TBPRD} = \frac{f_{clk}}{f_{pwm}} - 1 \quad\text{(up-count)} \qquad \text
         "Dead-Time Voltage Error": r"""
 $$\Delta V \approx V_{dc}\,\frac{t_{dead}}{T_{sw}}$$
 
-Creates low-order voltage harmonics — compensate by adjusting duty based on current direction.
+Creates low-order voltage harmonics: compensate by adjusting duty based on current direction.
 """,
         "Buck Converter (CCM)": r"""
 $$V_{out} = D\,V_{in} \qquad \Delta I_L = \frac{(V_{in}-V_{out})\,D}{L\,f_{sw}} \qquad \Delta V_C = \frac{\Delta I_L}{8\,C\,f_{sw}}$$
@@ -316,7 +316,7 @@ def main():
 
     # Footer
     st.markdown(
-        "<div class='footer'>DriveCalc — Developed by <strong>Masoud Bakhshi</strong> &nbsp;·&nbsp; "
+        "<div class='footer'>DriveCalc: Developed by <strong>Masoud Bakhshi</strong> &nbsp;·&nbsp; "
         "All results are for educational and design support only. "
         "Verify critical values with measurements and certified analysis.</div>",
         unsafe_allow_html=True,

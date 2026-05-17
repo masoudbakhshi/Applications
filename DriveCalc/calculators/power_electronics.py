@@ -90,7 +90,7 @@ def _svpwm():
     v_max = vdc / np.sqrt(3)
     if v_mag > v_max:
         show_warning(f"Reference magnitude ({v_mag:.1f} V) exceeds linear SVPWM limit "
-                     f"({v_max:.1f} V). Over-modulation — results are approximate.")
+                     f"({v_max:.1f} V). Over-modulation: results are approximate.")
 
     theta = np.radians(v_angle % 360)
     sector = int(np.floor(v_angle % 360 / 60)) + 1
@@ -103,7 +103,7 @@ def _svpwm():
     T0 = T_sw - T1 - T2
     T0 = max(T0, 0)
 
-    # Duties — sector-dependent switching sequence (simplified symmetric)
+    # Duties: sector-dependent switching sequence (simplified symmetric)
     # Map sector to ABC duties using standard SVPWM table
     _sv_duties = {
         1: lambda t1, t2, t0: ((T_sw - t0/2) / T_sw,
@@ -196,9 +196,9 @@ def _buck():
         st.metric("Output ripple [%]", f"{ripple_pct:.3f}")
         st.metric("P_out [W]", f"{p_out:.3f}")
         if ccm:
-            st.success("✅ CCM — continuous conduction mode")
+            st.success("✅ CCM: continuous conduction mode")
         else:
-            show_warning("DCM — discontinuous conduction mode. CCM formulas are not valid. Reduce L or increase load.")
+            show_warning("DCM: discontinuous conduction mode. CCM formulas are not valid. Reduce L or increase load.")
 
     with st.expander("Formulas"):
         show_formula(r"V_{out} = D\,V_{in} \qquad \Delta I_L = \frac{(V_{in}-V_{out})\,D}{L\,f_{sw}}")
@@ -248,7 +248,7 @@ def _boost():
         if ccm:
             st.success("✅ CCM")
         else:
-            show_warning("⚠️ DCM — CCM formulas not valid.")
+            show_warning("⚠️ DCM: CCM formulas not valid.")
 
     with st.expander("Formulas"):
         show_formula(r"V_{out} = \frac{V_{in}}{1-D} \qquad \Delta I_L = \frac{V_{in}\,D}{L\,f_{sw}}")

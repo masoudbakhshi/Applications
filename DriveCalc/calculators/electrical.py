@@ -60,7 +60,7 @@ def _ohms_law():
             show_info("Enter at least two known values.")
             return
     except ZeroDivisionError:
-        show_warning("Division by zero — check your inputs.")
+        show_warning("Division by zero: check your inputs.")
         return
 
     with col2:
@@ -115,7 +115,7 @@ def _rc_rl_rlc():
                 r"Q = \frac{1}{R}\sqrt{\frac{L}{C}}"
             )
             if zeta < 0.5:
-                show_warning("ζ < 0.5 — underdamped system, oscillatory transient response.")
+                show_warning("ζ < 0.5: underdamped system, oscillatory transient response.")
 
     # Bode magnitude plot
     freqs = np.logspace(0, 6, 1000)
@@ -233,7 +233,7 @@ def _filter_design():
         f_c = st.number_input("Desired cutoff frequency f_c [Hz]", value=1000.0, min_value=0.0,
                               key="flt_fc")
         order = st.selectbox("Filter order", ["1st order (RC)", "1st order (RL)",
-                                              "2nd order (RLC)", "2nd order (LC — ideal)"],
+                                              "2nd order (RLC)", "2nd order (LC: ideal)"],
                              key="flt_ord")
         if "RC" in order:
             R = st.number_input("R [Ω]", value=100.0, min_value=0.0, key="flt_r")
