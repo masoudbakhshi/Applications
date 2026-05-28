@@ -158,8 +158,7 @@ with tab_params:
     st.markdown('<div class="section-hdr">Machine & Inverter Parameters</div>',
                 unsafe_allow_html=True)
     st.info(
-        "Default values represent a **270 kW heavy-truck propulsion motor** "
-        "(example only: replace with measured / validated data)."
+        "Default values are example only, replace with measured / validated data."
     )
 
     col1, col2, col3 = st.columns(3)
